@@ -78,38 +78,23 @@ document.addEventListener('DOMContentLoaded', function(){
                wrapper.innerHTML += item;
           })
      }
-     const deleteBtn = document.querySelectorAll('.delete-item')
-     deleteBtn.length > 0 && deleteBtn.forEach(function(element){
+     const deleteButtons = document.querySelectorAll('.delete-item')
+     deleteButtons.length > 0 && deleteButtons.forEach(function(element){
           element.addEventListener('click', function(event){
                event.preventDefault();
-               let isDelete = confirm('Rostdanam o`chirasanmi');
+               let isDelete = confirm("Rostdanam o`chirmoqchimisiz uylab kuring?");
                if(isDelete){
-                    let deleteId = this.getAtribute('data-id')
-                    let copied = JSON.parse(JSON.stringify(data))
+                let deleteId = this.getAttribute('data-id');
+                    let copied = JSON.parse(JSON.stringify(data));
                     copied = copied.filter(function(del){
-                         return del.id != deleteId;
+                    return del.id != deleteId
                     })
-                    localStorage.setItem('todos', JSON.stringify(copied))
+
+                    localStorage.setItem('todos', JSON.stringify(copied));
+                    window.location.reload();
                }
           })
      })
 })
 
 
-btn && btn.addEventListener('click', function() {
-     let name = 'Javohirboy';
-     localStorage.setItem('name', name);
-     localStorage.setItem('age', 16);
-
-     const user = [
-          {name: 'John', age:34},
-          {name: 'Doe', age:23},     
-     ]
-     localStorage.setItem('user', JSON.stringify(user));
-
-     let name = localStorage.getItem('user');
-     console.log(JSON.parse(name))
-
-     localStorage.removeItem('name');
-     localStorage.clear()
-})
